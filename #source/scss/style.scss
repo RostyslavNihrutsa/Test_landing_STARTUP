@@ -1,0 +1,396 @@
+//<МИКСИНЫ>===============================================================================================
+@import "mixins.scss";
+//</МИКСИНЫ>===============================================================================================
+
+//<ШРИФТЫ>===============================================================================================
+
+//<Подключаем шрифты>=======================================================================================
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap");
+//</Подключаем шрифты>=======================================================================================
+
+//<Иконочные шрифты>==========================================================================================
+
+//</Иконочные шрифты>==========================================================================================
+
+//<Шрифт по умолчанию>==========================================================================================
+$fontfamily: "Roboto Slab", serif;
+//</Шрифт по умолчанию>==========================================================================================
+
+//</ШРИФТЫ>=======================================================================================================
+
+//<ПЕРЕМЕННЫЕ>===========================================================================================================
+$minwidth: 320px;
+$mw: 1140;
+$md1: $mw + 12;
+$md2: 991.98;
+$md3: 767.98;
+$md4: 479.98;
+$maxWidth: 1600;
+$maxWidthContainer: $mw;
+//</ПЕРЕМЕННЫЕ>===========================================================================================================
+
+//<ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>===============================================================================================
+@import "null.scss";
+body {
+	color: #000;
+	font-size: 14px;
+	&.lock {
+		overflow: hidden;
+	}
+}
+
+//</ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>===============================================================================================
+
+//<ОБОЛОЧКА>===========================================================================================================
+.wrapper {
+	width: 100%;
+	min-height: 100%;
+	overflow: hidden;
+	@include flexbox();
+	flex-direction: column;
+	&.loaded {
+	}
+}
+//</ОБОЛОЧКА>===========================================================================================================
+
+//<ОСНОВНАЯ СЕТКА>===========================================================================================================
+.container {
+	//max-width: $mw + px;
+	margin: 0 auto;
+	//width: 100%;
+	@include adaptiv-value("max-width", $mw, 320, 0);
+	padding: 0 10px;
+	// @media (max-width: $md1+px) {
+	// 	max-width: 970px;
+
+	// }
+	// @media (max-width: $md2+px) {
+	// 	max-width: 750px;
+	// }
+	// @media (max-width: $md3+px) {
+	// 	max-width: none;
+	// 	padding: 0 10px;
+	// }
+}
+
+.fullscreen {
+	flex: 1 0 100%;
+	position: relative;
+
+	//align-items: center;
+
+	&__body {
+		position: absolute;
+		z-index: 5;
+		text-align: center;
+		width: 100%;
+		margin: 0 auto;
+		padding: 45px 0 0 0;
+	}
+
+	&__title {
+		font-family: Montserrat;
+		text-transform: uppercase;
+		color: #fff;
+		@include adaptiv-value("padding-top", 260, 80, 0);
+		@include adaptiv-value("padding-bottom", 35, 20, 0);
+		@include adaptiv-value("font-size", 48, 40, 0);
+	}
+
+	&__subtitle {
+		font-family: RobotoSlab;
+		font-size: 20px;
+		color: #fff;
+		text-transform: none;
+		padding-bottom: 50px;
+	}
+
+	&__btn {
+		font-family: Montserrat;
+		font-size: 16px;
+		//line-height: 24px;
+		font-weight: 400;
+		text-transform: uppercase;
+		color: #fff;
+		border: 1px solid #fff;
+		padding: 20px 35px;
+		display: inline-block;
+	}
+
+	&__bg {
+		position: absolute;
+		min-width: 100vh;
+		min-height: 100vh;
+		top: 0;
+		left: 0;
+		z-index: -1;
+	}
+}
+.btn {
+}
+//</ОСНОВНАЯ СЕТКА>===========================================================================================================
+
+.services {
+	text-align: center;
+	padding: 100px 0;
+	@media (max-width: $md3+px) {
+		padding: 50px 0 20px 0;
+	}
+
+	&__title {
+	}
+
+	&__subtitle {
+		margin: 35px 0 70px 0;
+	}
+
+	&__row {
+		@include flexbox();
+		flex-wrap: wrap;
+		margin: 0 -20px;
+	}
+
+	&__item {
+		flex: 1 1 33.333%;
+		padding: 0 20px;
+
+		@media (max-width: $md2+px) {
+			flex: 1 1 100%;
+		}
+		&:nth-child(2) {
+			.services__logo {
+				img {
+					position: relative;
+					top: 25%;
+				}
+			}
+		}
+	}
+
+	&__item-red {
+		.services__logo {
+			background-color: #c0301c;
+		}
+	}
+
+	&__body {
+	}
+
+	&__logo {
+		display: inline-block;
+		width: 90px;
+		height: 90px;
+		border: 2px solid #dddddd;
+		border-radius: 50%;
+		margin: 0 0 30px 0;
+		img {
+			position: relative;
+			top: 22%;
+		}
+	}
+
+	&__label {
+		font-family: Montserrat;
+		font-size: 14px;
+		line-height: 24px;
+		text-transform: uppercase;
+		color: #555555;
+		margin: 0 0 23px 0;
+	}
+
+	&__text {
+		font-size: 14px;
+		line-height: 24px;
+		color: #555555;
+		@media (max-width: $md2+px) {
+			margin: 0 60px 30px 60px;
+		}
+	}
+	@media (max-width: $md4+px) {
+		&__title {
+			padding: 0 0 10px 0;
+		}
+		&__subtitle {
+			margin: 15px 0 30px 0;
+		}
+		&__logo {
+			margin: 0 0 10px 0;
+		}
+		&__label {
+			margin: 0 0 10px 0;
+		}
+		&__text {
+			margin: 0 0 30px 0;
+		}
+	}
+}
+
+.title {
+	font-family: Montserrat;
+	font-size: 20px;
+	line-height: 24px;
+	text-transform: uppercase;
+	color: #555555;
+	padding: 0 0 30px 0;
+	position: relative;
+	&:after {
+		content: "";
+		position: absolute;
+		width: 50px;
+		height: 2px;
+		margin: 0 0 0 -25px;
+		background-color: #555555;
+		bottom: 0;
+		left: 50%;
+		padding: 0px;
+	}
+}
+
+.subtitle {
+	font-size: 16px;
+	line-height: 24px;
+	color: #555555;
+	margin: 35px 0 70px 0;
+}
+
+//</ОСНОВНАЯ СЕТКА>===========================================================================================================
+.about {
+	background-color: #f8f8f8;
+	text-align: center;
+	@include adaptiv-value("padding-top", 100, 20, 0);
+	@include adaptiv-value("padding-bottom", 100, 20, 0);
+	&__title {
+	}
+
+	&__subtitle {
+	}
+
+	&__item {
+		flex: 1 1 50%;
+		padding: 0 16px;
+	}
+
+	&__text {
+		font-family: RobotoSlab;
+		font-size: 14px;
+		line-height: 24px;
+		color: #555555;
+		margin: 0 0 15px 0;
+	}
+
+	&__column {
+		flex: 0 0 25%;
+	}
+	&__image {
+		//max-width: 263px;
+		// display: block;
+		// padding: 0 0 100% 0;
+		margin: 0 0 20px 0;
+		img {
+			max-width: 263px;
+		}
+	}
+
+	&__name {
+		font-family: Montserrat;
+		font-size: 14px;
+		text-transform: uppercase;
+		color: #555555;
+		margin: 0 0 15px 0;
+	}
+
+	&__post {
+		font-size: 13px;
+		color: #555555;
+	}
+}
+
+.about-text {
+	&__row {
+		@include flexbox();
+		//flex-wrap: wrap;
+		margin: 0 -16px 0 -16px;
+		@include adaptiv-value("margin-bottom", 55, 20, 0);
+	}
+}
+.about-galery {
+	&__row {
+		@include flexbox();
+		max-width: $mw;
+		flex-wrap: wrap;
+	}
+}
+//</ОСНОВНАЯ СЕТКА>===========================================================================================================
+
+.works {
+	text-align: center;
+	margin: 0 auto;
+	&__title {
+	}
+
+	&__filter {
+	}
+
+	&__list {
+		@include flexbox();
+		align-items: center;
+		margin: 0 -12px;
+		text-align: center;
+
+		//ustify-content: space-between;
+	}
+
+	&__link {
+		font-family: RobotoSlab;
+		font-size: 16px;
+		line-height: 24px;
+		font-weight: 400;
+		color: #555555;
+		margin: 0 12px;
+		&:hover {
+			color: #c0301c;
+		}
+	}
+
+	&__row {
+		@include flexbox();
+		flex: 1 1 33.3333%;
+		flex-wrap: wrap;
+		margin: 0 auto;
+	}
+
+	&__item {
+	}
+}
+
+//</ОСНОВНАЯ СЕТКА>===========================================================================================================
+//</ОСНОВНАЯ СЕТКА>===========================================================================================================
+//</ОСНОВНАЯ СЕТКА>===========================================================================================================
+//</ОСНОВНАЯ СЕТКА>===========================================================================================================
+//</ОСНОВНАЯ СЕТКА>===========================================================================================================
+//</ОСНОВНАЯ СЕТКА>===========================================================================================================
+
+//<ПОДКЛЮЧЕНИЕ ФАЙЛОВ UI СТИЛЕЙ, ФОРМ И ГОТОВЫХ КЛАССОВ>====================================================================================================
+//@import "forms.scss";
+@import "ui.scss";
+//</ПОДКЛЮЧЕНИЕ ФАЙЛОВ UI СТИЛЕЙ, ФОРМ И ГОТОВЫХ КЛАССОВ>====================================================================================================
+
+//<ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>====================================================================================================
+//@import "../../js/fancybox/jquery.fancybox.scss";
+//@import "datepicker.scss";
+//@import "fontawesome.scss";
+//@import "popover.min.scss";
+//@import "baguetteBox.scss";
+//@import "pagging.scss";
+//@import "icons.scss";
+//@import "popup.scss";
+@import "header.scss";
+//@import "footer.scss";
+//@import "home.scss";
+//</ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>====================================================================================================
+
+//<ОСНОВНОЙ БЛОК>====================================================================================================
+
+//====================================================================================================
+
+//</ОСНОВНОЙ БЛОК>====================================================================================================
